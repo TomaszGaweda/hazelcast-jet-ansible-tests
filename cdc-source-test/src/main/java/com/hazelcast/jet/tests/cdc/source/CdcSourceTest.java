@@ -30,6 +30,7 @@ import com.hazelcast.jet.pipeline.Sinks;
 import com.hazelcast.jet.pipeline.StreamSource;
 import com.hazelcast.jet.pipeline.StreamStage;
 import com.hazelcast.jet.tests.common.AbstractSoakTest;
+import io.debezium.connector.mysql.MySqlConnectorConfig.SecureConnectionMode;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -160,6 +161,7 @@ public class CdcSourceTest extends AbstractSoakTest {
                 .setDatabaseClientId(clusterName.contains(STABLE_CLUSTER) ? 444444 : 555555)
                 .setDatabaseWhitelist(DATABASE_NAME)
                 .setTableWhitelist(DATABASE_NAME + "." + tableName)
+                .setSslMode(SecureConnectionMode.DISABLED.getValue())
                 .build();
 
         Sink<Integer> insertSink = Sinks.fromProcessor("insertVerificationProcessor",
