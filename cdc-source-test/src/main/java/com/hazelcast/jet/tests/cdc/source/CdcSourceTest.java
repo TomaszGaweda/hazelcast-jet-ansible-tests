@@ -71,7 +71,7 @@ public class CdcSourceTest extends AbstractSoakTest {
         String connectionUrlProperty = property("connectionUrl", DEFAULT_DATABASE_URL);
         connectionUrl = connectionUrlProperty + "?useSSL=false";
         connectionIp = connectionUrlProperty.split("//")[1];
-        connectionUrlWithDb = connectionUrlProperty + "/" + DATABASE_NAME + "?useSSL=false";
+        connectionUrlWithDb = connectionUrlProperty + "/" + DATABASE_NAME + "?useSSL=false&enabledTLSProtocols=TLSv1.2";
 
         sleepMsBetweenItem = propertyInt("sleepMsBetweenItem", DEFAULT_SLEEP_MS_BETWEEN_ITEM);
         snapshotIntervalMs = propertyInt("snapshotIntervalMs", DEFAULT_SNAPSHOT_INTERVAL);
